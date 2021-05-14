@@ -5,6 +5,11 @@
   max-width: 300px;
 }
 
-div {
+.field {
   border: 1px solid black;
+}
+
+.field:hover {
+  background: rgba(0, 0, 0, 0.103);
+  cursor: pointer;
 }

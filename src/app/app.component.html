@@ -1,5 +1,10 @@
 <div class="board">
-  <div *ngFor="let value of fieldValues">
+  <div
+    class="field"
+    *ngFor="let value of fieldValues; let i = index"
+    (click)="setValueOnField(i)"
+  >
     <app-field></app-field>
   </div>
 </div>
+<p>Turno do jogador: {{ playerOnTurn.name }}</p>
