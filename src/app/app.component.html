@@ -4,7 +4,7 @@
     *ngFor="let value of fieldValues; let i = index"
     (click)="setValueOnField(i)"
   >
-    <app-field [fieldMark]="value" [index]="i"></app-field>
+    <app-field [fieldMark]="value"></app-field>
   </div>
 </div>
 <p *ngIf="!isGameWon()">Turno do jogador: {{ playerOnTurn.name }}</p>

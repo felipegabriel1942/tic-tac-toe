@@ -56,16 +56,17 @@ export class AppComponent implements OnInit {
       return;
     }
 
-    if (this.isFieldMarked(index)) {
+    if (this.isFieldAlredyMarked(index)) {
       return;
     }
 
     this.fieldValues[index] = this.playerOnTurn.mark;
+
     this.checkGameState();
     this.changePlayerTurn();
   }
 
-  isFieldMarked(index: number): boolean {
+  isFieldAlredyMarked(index: number): boolean {
     return this.fieldValues[index] != null;
   }
 
@@ -74,72 +75,26 @@ export class AppComponent implements OnInit {
   }
 
   checkGameState(): void {
-    const victoryCondition1 = [
-      this.fieldValues[0],
-      this.fieldValues[1],
-      this.fieldValues[2],
+    const victoryConditions = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
     ];
 
-    const victoryCondition2 = [
-      this.fieldValues[3],
-      this.fieldValues[4],
-      this.fieldValues[5],
-    ];
-
-    const victoryCondition3 = [
-      this.fieldValues[6],
-      this.fieldValues[7],
-      this.fieldValues[8],
-    ];
-
-    const victoryCondition4 = [
-      this.fieldValues[0],
-      this.fieldValues[3],
-      this.fieldValues[6],
-    ];
-
-    const victoryCondition5 = [
-      this.fieldValues[1],
-      this.fieldValues[4],
-      this.fieldValues[7],
-    ];
-
-    const victoryCondition6 = [
-      this.fieldValues[2],
-      this.fieldValues[5],
-      this.fieldValues[8],
-    ];
-
-    const victoryCondition7 = [
-      this.fieldValues[0],
-      this.fieldValues[4],
-      this.fieldValues[8],
-    ];
-
-    const victoryCondition8 = [
-      this.fieldValues[2],
-      this.fieldValues[4],
-      this.fieldValues[6],
-    ];
-
-    const validations = [
-      victoryCondition1,
-      victoryCondition2,
-      victoryCondition3,
-      victoryCondition4,
-      victoryCondition5,
-      victoryCondition6,
-      victoryCondition7,
-      victoryCondition8,
-    ];
-
-    validations.forEach((condition) => this.checkForWinner(condition));
+    victoryConditions.forEach(indexes => this.checkForWinner(indexes));
   }
 
-  checkForWinner(fields: number[]): void {
-    const markedFields = fields.filter((value) => value != null);
+  checkForWinner(indexes: number[]): void {
+    const markedFields = indexes
+      .map(index => this.fieldValues[index])
+      .filter(value => value != null);
 
-    if (markedFields.length !== fields.length) {
+    if (markedFields.length !== indexes.length) {
       return;
     }
 
