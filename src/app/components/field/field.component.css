@@ -3,13 +3,26 @@ div {
   text-align: center;
   vertical-align: middle;
   line-height: 200px;
-  font-size: 35px;
-  animation-name: mark-pop;
+  /* font-size: 35px; */
+  /* animation-name: mark-pop;
   animation-duration: 0.3s;
-  animation-timing-function: ease-in;
+  animation-timing-function: ease-in; */
+  border: 3px solid rgba(19, 18, 18, 0.267);
 }
 
-@keyframes mark-pop {
+div:hover {
+  background: rgba(0, 0, 0, 0.103);
+  border: 3px solid red;
+  cursor: pointer;
+}
+
+@media (max-width: 640px), (max-width: 320px) {
+  div {
+    line-height: 100px;
+  }
+}
+
+/* @keyframes mark-pop {
   0% {
     font-size: 0;
   }
@@ -53,4 +66,4 @@ div {
   100% {
     font-size: 35px;
   }
-}
+} */

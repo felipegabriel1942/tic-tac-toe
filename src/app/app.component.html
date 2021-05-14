@@ -1,16 +1,16 @@
 <main>
-  <h2>TIC-TAC-TOE</h2>
+  <h2>JOGO DA VELHA</h2>
   <div class="board">
-    <div
-      class="field"
-      *ngFor="let value of fieldValues; let i = index"
-      (click)="setValueOnField(i)"
-    >
-      <app-field [fieldMark]="value"></app-field>
-    </div>
+    <ng-container *ngFor="let value of fieldValues; let i = index">
+      <app-field
+        [fieldMark]="value"
+        [index]="i"
+        (click)="setValueOnField(i)"
+      ></app-field>
+    </ng-container>
   </div>
   <p *ngIf="!isGameWon()">Turno do jogador: {{ playerOnTurn.name }}</p>
   <P *ngIf="isGameWon()">Jogador vencedor: {{ winnerPlayer.name }}</P>
 
-  <button (click)="restartGame()">RESET</button>
+  <button (click)="restartGame()">REINICIAR</button>
 </main>

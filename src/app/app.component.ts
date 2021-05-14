@@ -86,13 +86,13 @@ export class AppComponent implements OnInit {
       [2, 4, 6],
     ];
 
-    victoryConditions.forEach(indexes => this.checkForWinner(indexes));
+    victoryConditions.forEach((indexes) => this.checkForWinner(indexes));
   }
 
   checkForWinner(indexes: number[]): void {
     const markedFields = indexes
-      .map(index => this.fieldValues[index])
-      .filter(value => value != null);
+      .map((index) => this.fieldValues[index])
+      .filter((value) => value != null);
 
     if (markedFields.length !== indexes.length) {
       return;
@@ -100,14 +100,22 @@ export class AppComponent implements OnInit {
 
     const fieldsValuesSum = markedFields.reduce((acc, v) => acc + v);
 
-    if (fieldsValuesSum === 0 || fieldsValuesSum === 3) {
+    if (this.isVictorious(fieldsValuesSum)) {
       this.winnerPlayer = this.playerOnTurn;
     }
+  }
+
+  isVictorious(fieldsValuesSum: number): boolean {
+    return fieldsValuesSum === 0 || fieldsValuesSum === 3;
   }
 
   changePlayerTurn(): void {
     this.playerOnTurn = this.players.filter(
       (player) => player.name !== this.playerOnTurn.name
     )[0];
+  }
+
+  teste(index: number) {
+    console.log(index);
   }
 }

@@ -15,16 +15,6 @@ h2 {
   min-width: 600px;
 }
 
-.field {
-  border: 3px solid rgba(19, 18, 18, 0.267);
-}
-
-.field:hover {
-  background: rgba(0, 0, 0, 0.103);
-  border: 3px solid red;
-  cursor: pointer;
-}
-
 button {
   height: 50px;
   color: purple;
@@ -44,7 +34,7 @@ button:active {
   }
 
   .field:hover {
-    border: 1px solid rgba(19, 18, 18, 0.267);
+    border: 3px solid rgba(19, 18, 18, 0.267);
     background: white;
     cursor: pointer;
   }
