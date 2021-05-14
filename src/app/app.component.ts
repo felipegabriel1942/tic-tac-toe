@@ -7,7 +7,7 @@ import { Player } from './models/player.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  fieldValues: string[] = [];
+  fieldValues: number[] = [];
   playerOnTurn: Player;
   players: Player[] = [];
 
@@ -17,7 +17,12 @@ export class AppComponent implements OnInit {
     this.createFields();
     this.createPlayers();
     this.setFirstPlayer();
-    console.log(this.playerOnTurn);
+  }
+
+  restartGame(): void {
+    this.fieldValues = [];
+    this.createFields();
+    this.setFirstPlayer();
   }
 
   createFields(): void {
@@ -45,7 +50,7 @@ export class AppComponent implements OnInit {
   }
 
   setValueOnField(index: number): void {
-    console.log(index);
+    this.fieldValues[index] = this.playerOnTurn.mark;
     this.changePlayerTurn();
   }
 
