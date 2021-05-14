@@ -1,0 +1,10 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 100px);
+  max-width: 300px;
+}
+
+div {
+  border: 1px solid black;
+}
