@@ -15,4 +15,14 @@ export class FieldComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get mark(): string {
+    const marks = {
+      0: 'X',
+      1: 'O'
+    };
+
+    return marks[this.fieldMark];
+
+  }
+
 }
