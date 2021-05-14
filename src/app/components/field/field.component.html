@@ -1,7 +1,3 @@
-<div
-  [ngStyle]="style"
-  [@clickedState]="fieldMark == null ? 'default' : 'clicked'"
-  (@clickedState.done)="finishedAnimation = true"
->
+<div [ngStyle]="style">
   <span>{{ mark }}</span>
 </div>

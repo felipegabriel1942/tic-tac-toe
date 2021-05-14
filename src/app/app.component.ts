@@ -21,13 +21,14 @@ export class AppComponent implements OnInit {
   }
 
   restartGame(): void {
-    this.fieldValues = [];
     this.winnerPlayer = null;
     this.createFields();
     this.setFirstPlayer();
   }
 
   createFields(): void {
+    this.fieldValues = [];
+
     for (let i = 0; i < 9; i++) {
       this.fieldValues.push(null);
     }
@@ -113,9 +114,5 @@ export class AppComponent implements OnInit {
     this.playerOnTurn = this.players.filter(
       (player) => player.name !== this.playerOnTurn.name
     )[0];
-  }
-
-  teste(index: number) {
-    console.log(index);
   }
 }
