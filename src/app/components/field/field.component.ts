@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class FieldComponent implements OnInit {
 
   @Input() fieldMark: number;
+  @Input() index: number;
 
   constructor() { }
 
