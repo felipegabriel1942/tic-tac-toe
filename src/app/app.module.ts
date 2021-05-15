@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { FieldComponent } from './components/field/field.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FieldComponent,
-    ScoreboardComponent
+    ScoreboardComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
