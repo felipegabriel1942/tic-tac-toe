@@ -6,12 +6,17 @@
       *ngFor="let value of fieldValues; let i = index"
       [fieldMark]="value"
       [index]="i"
-      (click)="setValueOnField(i)"
+      (click)="onPlayerMove(i)"
     ></app-field>
   </div>
 
-  <p *ngIf="!isGameWon()">Jogador da vez: {{ playerOnTurn.name }}</p>
-  <P *ngIf="isGameWon()">Jogador vencedor: {{ winnerPlayer.name }}</P>
+  <div class="turn-controller">
+    <p *ngIf="!isGameWon() && !isGameTie()">
+      Jogador da vez: {{ playerOnTurn.name }}
+    </p>
+    <P *ngIf="isGameWon()">Jogador vencedor: {{ winnerPlayer.name }}</P>
+    <P *ngIf="isGameTie()">Empate</P>
+  </div>
 
   <app-scoreboard [players]="players"></app-scoreboard>
 

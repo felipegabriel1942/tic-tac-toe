@@ -36,12 +36,12 @@ export class AppComponent implements OnInit {
 
   createPlayers(): void {
     const player1 = new Player({
-      name: 'Mario',
+      name: 'Jogador',
       mark: 0,
     });
 
     const player2 = new Player({
-      name: 'Luigi',
+      name: 'roboto',
       mark: 1,
     });
 
@@ -52,12 +52,8 @@ export class AppComponent implements OnInit {
     this.playerOnTurn = this.players[0];
   }
 
-  setValueOnField(index: number): void {
-    if (this.isGameWon()) {
-      return;
-    }
-
-    if (this.isFieldAlredyMarked(index)) {
+  onPlayerMove(index: number): void {
+    if (this.cannotMakeMove(index)) {
       return;
     }
 
@@ -65,6 +61,42 @@ export class AppComponent implements OnInit {
 
     this.checkGameState();
     this.changePlayerTurn();
+    this.makeRobotoAction();
+  }
+
+  cannotMakeMove(index: number): boolean {
+    return (
+      this.isGameWon() ||
+      this.isGameTie() ||
+      this.robotoIsPlaying() ||
+      this.isFieldAlredyMarked(index)
+    );
+  }
+
+  robotoIsPlaying(): boolean {
+    return this.playerOnTurn.name.includes('roboto');
+  }
+
+  makeRobotoAction(): void {
+    if (this.isGameWon() || this.isGameTie()) {
+      return;
+    }
+
+    setTimeout(() => {
+      this.chooseOneFieldForRoboto();
+      this.checkGameState();
+      this.changePlayerTurn();
+    }, 1000);
+  }
+
+  chooseOneFieldForRoboto(): void {
+    const chosenField = Math.floor(Math.random() * 9);
+
+    if (this.isFieldAlredyMarked(chosenField)) {
+      this.chooseOneFieldForRoboto();
+    } else {
+      this.fieldValues[chosenField] = 1;
+    }
   }
 
   isFieldAlredyMarked(index: number): boolean {
@@ -73,6 +105,13 @@ export class AppComponent implements OnInit {
 
   isGameWon(): boolean {
     return this.winnerPlayer != null;
+  }
+
+  isGameTie(): boolean {
+    return (
+      this.fieldValues.filter((value) => value == null).length === 0 &&
+      !this.isGameWon()
+    );
   }
 
   checkGameState(): void {

@@ -9,9 +9,16 @@ h2 {
 
 .board {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
-  grid-template-rows: repeat(3, 200px);
-  min-width: 600px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, auto));
+  grid-template-rows: repeat(3, 180px);
+  min-width: 540px;
+}
+
+.turn-controller {
+  border: 3px solid black;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 15px 0px 5px 0px;
 }
 
 button {
