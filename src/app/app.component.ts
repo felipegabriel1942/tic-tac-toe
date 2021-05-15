@@ -26,6 +26,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   restartGame(): void {
+    this.closeModal();
     this.winnerPlayer = null;
     this.createFields();
     this.setFirstPlayer();
@@ -166,5 +167,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   openModal(): void {
     this.modalService.openModal();
+  }
+
+  closeModal(): void {
+    this.modalService.closeModal();
   }
 }

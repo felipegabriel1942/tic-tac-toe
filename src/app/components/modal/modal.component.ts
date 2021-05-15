@@ -22,19 +22,19 @@ export class ModalComponent implements OnInit, OnDestroy {
   constructor(private modalService: ModalService) {}
 
   ngOnInit(): void {
-    this.openModal();
+    const openModal$ = this.modalService.onOpenModal.subscribe(() => {
+      this.modal.nativeElement.style.display = 'block';
+    });
+
+    const closeModal$ = this.modalService.onCloseModal.subscribe(() => {
+      this.closeModal();
+    });
+
+    this.subscriptions$.push(openModal$, closeModal$);
   }
 
   ngOnDestroy(): void {
     this.subscriptions$.forEach(subscription => subscription.unsubscribe());
-  }
-
-  openModal(): void {
-    const subscription$ = this.modalService.onOpenModal.subscribe(() => {
-      this.modal.nativeElement.style.display = 'block';
-    });
-
-    this.subscriptions$.push(subscription$);
   }
 
   @HostListener('document:click', ['$event'])
