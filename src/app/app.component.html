@@ -11,10 +11,21 @@
   </div>
 
   <div class="turn-controller">
-    <p *ngIf="!isGameWon() && !isGameTie()">
-      Jogador da vez: {{ playerOnTurn.name }}
+    <p *ngIf="!isGameWon() && !isGameTie() && playerOnTurn.name === 'jogador'">
+      Sua vez...
     </p>
-    <P *ngIf="isGameWon()">Jogador vencedor: {{ winnerPlayer.name }}</P>
+    <p *ngIf="!isGameWon() && !isGameTie() && playerOnTurn.name === 'roboto'">
+      ROBOTO está jogando...
+    </p>
+    <div *ngIf="isGameWon() && winnerPlayer.name == 'jogador'">
+      <img src="../assets/images/award.png" height="30" />
+      <span> Parabéns você venceu !!</span>
+    </div>
+    <div *ngIf="isGameWon() && winnerPlayer.name == 'roboto'">
+      <img src="../assets/images/award.png" height="30" />
+      <span> ROBOTO venceu !!</span>
+    </div>
+
     <P *ngIf="isGameTie()">Empate</P>
   </div>
 

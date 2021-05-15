@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
 
   createPlayers(): void {
     const player1 = new Player({
-      name: 'Jogador',
+      name: 'jogador',
       mark: 0,
     });
 

@@ -15,10 +15,16 @@ h2 {
 }
 
 .turn-controller {
+  display: grid;
   border: 3px solid black;
   border-radius: 8px;
   padding: 10px;
   margin: 15px 0px 5px 0px;
+  align-items: center;
+}
+
+p {
+  text-align: center;
 }
 
 button {
