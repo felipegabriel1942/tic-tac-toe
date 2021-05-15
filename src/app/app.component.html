@@ -10,7 +10,21 @@
     ></app-field>
   </div>
 
-  <app-modal></app-modal>
+  <app-modal>
+    <div>
+      <div *ngIf="isGameWon() && winnerPlayer.name == 'jogador'" style="text-align: center">
+        <img src="../assets/images/award.png" height="180" />
+        <p> Parabéns você venceu !!!</p>
+      </div>
+      <div *ngIf="isGameWon() && winnerPlayer.name == 'roboto'" style="text-align: center">
+        <img src="../assets/images/roboto.png" height="180" />
+        <p> ROBOTO venceu !!!</p>
+      </div>
+    </div>
+    <div>
+      <button></button>
+    </div>
+  </app-modal>
 
   <div class="turn-controller">
     <p *ngIf="!isGameWon() && !isGameTie() && playerOnTurn.name === 'jogador'">

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ModalService } from './components/modal/modal.service';
 import { Player } from './models/player.model';
 
 @Component({
@@ -6,18 +7,22 @@ import { Player } from './models/player.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   fieldValues: number[] = [];
   playerOnTurn: Player;
   winnerPlayer: Player;
   players: Player[] = [];
 
-  constructor() {}
+  constructor(private modalService: ModalService) {}
 
   ngOnInit(): void {
     this.createFields();
     this.createPlayers();
     this.setFirstPlayer();
+  }
+
+  ngAfterViewInit(): void {
+    // this.openModal();
   }
 
   restartGame(): void {
@@ -145,6 +150,7 @@ export class AppComponent implements OnInit {
       this.winnerPlayer.pontuation++;
       const index = this.players.indexOf(this.winnerPlayer);
       this.players[index] = this.winnerPlayer;
+      this.openModal();
     }
   }
 
@@ -156,5 +162,9 @@ export class AppComponent implements OnInit {
     this.playerOnTurn = this.players.filter(
       (player) => player.name !== this.playerOnTurn.name
     )[0];
+  }
+
+  openModal(): void {
+    this.modalService.openModal();
   }
 }

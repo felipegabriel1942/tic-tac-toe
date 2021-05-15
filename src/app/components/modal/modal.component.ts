@@ -2,24 +2,39 @@ import {
   Component,
   ElementRef,
   HostListener,
+  OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ModalService } from './modal.service';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css'],
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent implements OnInit, OnDestroy {
   @ViewChild('modal') modal: ElementRef;
 
-  constructor() {}
+  subscriptions$: Subscription[] = [];
 
-  ngOnInit(): void {}
+  constructor(private modalService: ModalService) {}
+
+  ngOnInit(): void {
+    this.openModal();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions$.forEach(subscription => subscription.unsubscribe());
+  }
 
   openModal(): void {
-    this.modal.nativeElement.style.display = 'block';
+    const subscription$ = this.modalService.onOpenModal.subscribe(() => {
+      this.modal.nativeElement.style.display = 'block';
+    });
+
+    this.subscriptions$.push(subscription$);
   }
 
   @HostListener('document:click', ['$event'])
