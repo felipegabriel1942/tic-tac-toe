@@ -103,6 +103,9 @@ export class AppComponent implements OnInit {
 
     if (this.isVictorious(fieldsValuesSum)) {
       this.winnerPlayer = this.playerOnTurn;
+      this.winnerPlayer.pontuation++;
+      const index = this.players.indexOf(this.winnerPlayer);
+      this.players[index] = this.winnerPlayer;
     }
   }
 

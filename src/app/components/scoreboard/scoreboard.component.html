@@ -1,0 +1,9 @@
+<div>
+  <label>Placar</label>
+  <ng-container *ngFor="let player of players; let i = index">
+    <p>
+      Jogador {{ i + 1 }}: {{ player?.name }} | Vitórias:
+      {{ player?.pontuation }}
+    </p>
+  </ng-container>
+</div>
