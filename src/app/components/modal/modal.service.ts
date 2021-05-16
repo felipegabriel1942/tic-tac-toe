@@ -8,11 +8,11 @@ export class ModalService {
   onOpenModal = new Subject<any>();
   onCloseModal = new Subject<any>();
 
-  openModal(): void {
-    this.onOpenModal.next();
+  openModal(id: string): void {
+    this.onOpenModal.next(id);
   }
 
-  closeModal(): void {
-    this.onCloseModal.next();
+  closeModal(id: string): void {
+    this.onCloseModal.next(id);
   }
 }

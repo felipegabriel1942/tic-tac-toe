@@ -1,12 +1,14 @@
 <main>
   <h2>JOGO DA VELHA</h2>
 
+  <app-modal [id]="'welcome'"></app-modal>
+
   <app-board
     [values]="fieldValues"
     (onPlayerMove)="onPlayerMove($event)"
   ></app-board>
 
-  <app-modal [closeButton]="false">
+  <app-modal [id]="'game-over'" [closeButton]="false">
     <app-gameover
       *ngIf="isGameWon() || isGameTie()"
       [winnerPlayer]="winnerPlayer"

@@ -17,6 +17,7 @@ import { ModalService } from './modal.service';
 })
 export class ModalComponent implements OnInit, OnDestroy {
   @Input() closeButton = true;
+  @Input() id: string;
 
   @ViewChild('modal') modal: ElementRef;
 
@@ -25,19 +26,25 @@ export class ModalComponent implements OnInit, OnDestroy {
   constructor(private modalService: ModalService) {}
 
   ngOnInit(): void {
-    const openModal$ = this.modalService.onOpenModal.subscribe(() => {
-      this.modal.nativeElement.style.display = 'block';
+    const openModal$ = this.modalService.onOpenModal.subscribe((id: string) => {
+      if (this.id === id) {
+        this.modal.nativeElement.style.display = 'block';
+      }
     });
 
-    const closeModal$ = this.modalService.onCloseModal.subscribe(() => {
-      this.closeModal();
-    });
+    const closeModal$ = this.modalService.onCloseModal.subscribe(
+      (id: string) => {
+        if (this.id === id) {
+          this.closeModal();
+        }
+      }
+    );
 
     this.subscriptions$.push(openModal$, closeModal$);
   }
 
   ngOnDestroy(): void {
-    this.subscriptions$.forEach(subscription => subscription.unsubscribe());
+    this.subscriptions$.forEach((subscription) => subscription.unsubscribe());
   }
 
   @HostListener('document:click', ['$event'])

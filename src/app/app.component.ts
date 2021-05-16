@@ -22,7 +22,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // this.openModal();
+    this.modalService.openModal('welcome');
   }
 
   restartGame(): void {
@@ -170,10 +170,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   openModal(): void {
-    this.modalService.openModal();
+    this.modalService.openModal('game-over');
   }
 
   closeModal(): void {
-    this.modalService.closeModal();
+    this.modalService.closeModal('game-over');
   }
 }
