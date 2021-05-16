@@ -2,6 +2,7 @@ import {
   Component,
   ElementRef,
   HostListener,
+  Input,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -15,6 +16,8 @@ import { ModalService } from './modal.service';
   styleUrls: ['./modal.component.css'],
 })
 export class ModalComponent implements OnInit, OnDestroy {
+  @Input() closeButton = true;
+
   @ViewChild('modal') modal: ElementRef;
 
   subscriptions$: Subscription[] = [];

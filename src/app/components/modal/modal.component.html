@@ -1,6 +1,6 @@
 <div id="modal" class="modal" #modal>
   <div class="modal-content">
-    <div style="display: inline-block">
+    <div class="close-container" *ngIf="closeButton">
       <span class="close" (click)="closeModal()">&times;</span>
     </div>
     <div>

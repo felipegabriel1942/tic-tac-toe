@@ -6,7 +6,7 @@
     (onPlayerMove)="onPlayerMove($event)"
   ></app-board>
 
-  <app-modal>
+  <app-modal [closeButton]="false">
     <app-gameover
       *ngIf="isGameWon() || isGameTie()"
       [winnerPlayer]="winnerPlayer"

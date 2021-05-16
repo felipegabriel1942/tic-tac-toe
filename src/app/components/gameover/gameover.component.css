@@ -1,6 +1,24 @@
+.message-grid {
+  padding: 15px 0px;
+}
+
+div {
+  text-align: center;
+}
+
+p {
+  margin: 25px;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
 button {
   height: 50px;
   color: purple;
   cursor: pointer;
   border-radius: 8px;
+  margin: 10px;
 }

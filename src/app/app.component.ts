@@ -68,6 +68,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.checkGameState();
     this.changePlayerTurn();
     this.makeRobotoAction();
+
+    if (this.isGameTie()) {
+      this.openModal();
+    }
   }
 
   cannotMakeMove(index: number): boolean {

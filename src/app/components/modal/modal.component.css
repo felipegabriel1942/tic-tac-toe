@@ -17,6 +17,11 @@
   margin: auto 5%;
   padding: 20px;
   border: 1px solid #888;
+  display: grid;
+}
+
+.close-container {
+  display: "inline-block";
 }
 
 .close {
