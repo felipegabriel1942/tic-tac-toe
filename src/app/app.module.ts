@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { BoardComponent } from './components/board/board.component';
+import { GameoverComponent } from './components/gameover/gameover.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { BoardComponent } from './components/board/board.component';
     FieldComponent,
     ScoreboardComponent,
     ModalComponent,
-    BoardComponent
+    BoardComponent,
+    GameoverComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,20 @@
+<div>
+  <div
+    *ngIf="winnerPlayer.name == 'jogador'"
+    style="text-align: center"
+  >
+    <img src="../assets/images/award.png" height="180" />
+    <p>Parabéns você venceu !!!</p>
+  </div>
+  <div
+    *ngIf="winnerPlayer.name == 'roboto'"
+    style="text-align: center"
+  >
+    <img src="../assets/images/roboto.png" height="180" />
+    <p>ROBOTO venceu !!!</p>
+  </div>
+</div>
+<div>
+  <button (click)="onCloseModal.emit()">FECHAR</button>
+  <button (click)="onRestartGame.emit()">JOGAR NOVAMENTE</button>
+</div>

@@ -7,46 +7,13 @@
   ></app-board>
 
   <app-modal>
-    <div>
-      <div
-        *ngIf="isGameWon() && winnerPlayer.name == 'jogador'"
-        style="text-align: center"
-      >
-        <img src="../assets/images/award.png" height="180" />
-        <p>Parabéns você venceu !!!</p>
-      </div>
-      <div
-        *ngIf="isGameWon() && winnerPlayer.name == 'roboto'"
-        style="text-align: center"
-      >
-        <img src="../assets/images/roboto.png" height="180" />
-        <p>ROBOTO venceu !!!</p>
-      </div>
-    </div>
-    <div>
-      <button (click)="closeModal()">FECHAR</button>
-      <button (click)="restartGame()">JOGAR NOVAMENTE</button>
-    </div>
+    <app-gameover
+      *ngIf="isGameWon() || isGameTie()"
+      [winnerPlayer]="winnerPlayer"
+      (onCloseModal)="closeModal()"
+      (onRestartGame)="restartGame()"
+    ></app-gameover>
   </app-modal>
-
-  <div class="turn-controller">
-    <p *ngIf="!isGameWon() && !isGameTie() && playerOnTurn.name === 'jogador'">
-      Sua vez...
-    </p>
-    <p *ngIf="!isGameWon() && !isGameTie() && playerOnTurn.name === 'roboto'">
-      ROBOTO está jogando...
-    </p>
-    <div *ngIf="isGameWon() && winnerPlayer.name == 'jogador'">
-      <img src="../assets/images/award.png" height="30" />
-      <span> Parabéns você venceu !!</span>
-    </div>
-    <div *ngIf="isGameWon() && winnerPlayer.name == 'roboto'">
-      <img src="../assets/images/award.png" height="30" />
-      <span> ROBOTO venceu !!</span>
-    </div>
-
-    <P *ngIf="isGameTie()">Empate</P>
-  </div>
 
   <app-scoreboard [players]="players"></app-scoreboard>
 

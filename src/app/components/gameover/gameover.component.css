@@ -1,0 +1,6 @@
+button {
+  height: 50px;
+  color: purple;
+  cursor: pointer;
+  border-radius: 8px;
+}
