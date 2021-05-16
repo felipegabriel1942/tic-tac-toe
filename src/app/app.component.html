@@ -1,24 +1,26 @@
 <main>
   <h2>JOGO DA VELHA</h2>
 
-  <div class="board">
-    <app-field
-      *ngFor="let value of fieldValues; let i = index"
-      [fieldMark]="value"
-      [index]="i"
-      (click)="onPlayerMove(i)"
-    ></app-field>
-  </div>
+  <app-board
+    [values]="fieldValues"
+    (onPlayerMove)="onPlayerMove($event)"
+  ></app-board>
 
   <app-modal>
     <div>
-      <div *ngIf="isGameWon() && winnerPlayer.name == 'jogador'" style="text-align: center">
+      <div
+        *ngIf="isGameWon() && winnerPlayer.name == 'jogador'"
+        style="text-align: center"
+      >
         <img src="../assets/images/award.png" height="180" />
-        <p> Parabéns você venceu !!!</p>
+        <p>Parabéns você venceu !!!</p>
       </div>
-      <div *ngIf="isGameWon() && winnerPlayer.name == 'roboto'" style="text-align: center">
+      <div
+        *ngIf="isGameWon() && winnerPlayer.name == 'roboto'"
+        style="text-align: center"
+      >
         <img src="../assets/images/roboto.png" height="180" />
-        <p> ROBOTO venceu !!!</p>
+        <p>ROBOTO venceu !!!</p>
       </div>
     </div>
     <div>

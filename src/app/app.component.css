@@ -7,13 +7,6 @@ h2 {
   text-align: center;
 }
 
-.board {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, auto));
-  grid-template-rows: repeat(3, 180px);
-  min-width: 540px;
-}
-
 .turn-controller {
   display: grid;
   border: 3px solid black;
@@ -39,12 +32,6 @@ button:active {
 }
 
 @media (max-width: 640px), (max-width: 320px) {
-  .board {
-    grid-template-columns: repeat(auto-fit, minmax(100px, auto));
-    grid-template-rows: repeat(3, 100px);
-    min-width: 300px;
-  }
-
   .field:hover {
     border: 3px solid rgba(19, 18, 18, 0.267);
     background: white;

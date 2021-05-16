@@ -1,0 +1,14 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, auto));
+  grid-template-rows: repeat(3, 180px);
+  min-width: 540px;
+}
+
+@media (max-width: 640px), (max-width: 320px) {
+  .board {
+    grid-template-columns: repeat(auto-fit, minmax(100px, auto));
+    grid-template-rows: repeat(3, 100px);
+    min-width: 300px;
+  }
+}
