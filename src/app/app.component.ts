@@ -96,7 +96,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.chooseOneFieldForRoboto();
       this.checkGameState();
       this.changePlayerTurn();
-    }, 1000);
+    }, 500);
   }
 
   chooseOneFieldForRoboto(): void {

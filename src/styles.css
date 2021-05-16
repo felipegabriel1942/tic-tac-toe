@@ -5,3 +5,8 @@
   font-family: 'Press Start 2P', sans-serif;
   box-sizing: border-box;
 }
+
+html {
+  height: calc(100vh);
+  background: rgb(238, 234, 229);
+}
