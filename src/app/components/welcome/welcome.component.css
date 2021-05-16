@@ -1,0 +1,22 @@
+p {
+  font-size: 18px;
+  text-align: center;
+}
+
+div {
+  text-align: center;
+}
+
+.button-grid {
+  display: grid;
+  margin-top: 20px;
+}
+
+button {
+  height: 50px;
+  color: purple;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 10px;
+}
+

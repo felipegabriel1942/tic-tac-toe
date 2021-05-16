@@ -26,7 +26,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   restartGame(): void {
-    this.closeModal();
+    this.closeGameOverModal();
     this.winnerPlayer = null;
     this.createFields();
     this.setFirstPlayer();
@@ -70,7 +70,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.makeRobotoAction();
 
     if (this.isGameTie()) {
-      this.openModal();
+      this.openGameOverModal();
     }
   }
 
@@ -155,7 +155,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.winnerPlayer.pontuation++;
       const index = this.players.indexOf(this.winnerPlayer);
       this.players[index] = this.winnerPlayer;
-      this.openModal();
+      this.openGameOverModal();
     }
   }
 
@@ -169,11 +169,15 @@ export class AppComponent implements OnInit, AfterViewInit {
     )[0];
   }
 
-  openModal(): void {
+  openGameOverModal(): void {
     this.modalService.openModal('game-over');
   }
 
-  closeModal(): void {
+  closeGameOverModal(): void {
     this.modalService.closeModal('game-over');
+  }
+
+  closeWelcomeModal(): void {
+    this.modalService.closeModal('welcome');
   }
 }

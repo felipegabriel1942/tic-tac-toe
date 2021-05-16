@@ -10,6 +10,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { BoardComponent } from './components/board/board.component';
 import { GameoverComponent } from './components/gameover/gameover.component';
 import { GameControlComponent } from './components/game-control/game-control.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { GameControlComponent } from './components/game-control/game-control.com
     ModalComponent,
     BoardComponent,
     GameoverComponent,
-    GameControlComponent
+    GameControlComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

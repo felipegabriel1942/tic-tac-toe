@@ -1,7 +1,9 @@
 <main>
   <h2>JOGO DA VELHA</h2>
 
-  <app-modal [id]="'welcome'"></app-modal>
+  <app-modal [id]="'welcome'">
+    <app-welcome (onCloseModal)="closeWelcomeModal()"></app-welcome>
+  </app-modal>
 
   <app-board
     [values]="fieldValues"
@@ -12,7 +14,7 @@
     <app-gameover
       *ngIf="isGameWon() || isGameTie()"
       [winnerPlayer]="winnerPlayer"
-      (onCloseModal)="closeModal()"
+      (onCloseModal)="closeGameOverModal()"
       (onRestartGame)="restartGame()"
     ></app-gameover>
   </app-modal>
