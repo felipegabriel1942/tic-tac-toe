@@ -15,6 +15,8 @@
     ></app-gameover>
   </app-modal>
 
+  <app-game-control [player]="playerOnTurn"></app-game-control>
+
   <app-scoreboard [players]="players"></app-scoreboard>
 
   <button (click)="restartGame()">REINICIAR</button>

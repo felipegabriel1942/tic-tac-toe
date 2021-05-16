@@ -9,6 +9,7 @@ import { ScoreboardComponent } from './components/scoreboard/scoreboard.componen
 import { ModalComponent } from './components/modal/modal.component';
 import { BoardComponent } from './components/board/board.component';
 import { GameoverComponent } from './components/gameover/gameover.component';
+import { GameControlComponent } from './components/game-control/game-control.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { GameoverComponent } from './components/gameover/gameover.component';
     ScoreboardComponent,
     ModalComponent,
     BoardComponent,
-    GameoverComponent
+    GameoverComponent,
+    GameControlComponent
   ],
   imports: [
     BrowserModule,
