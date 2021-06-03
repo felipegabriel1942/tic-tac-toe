@@ -14,11 +14,12 @@
 
 .modal-content {
   background-color: #fefefe;
-  margin: auto 5%;
+  margin: auto;
   padding: 20px;
   border: 1px solid #888;
   border-radius: 8px;
   display: grid;
+  max-width: 600px;
 }
 
 .close-container {
