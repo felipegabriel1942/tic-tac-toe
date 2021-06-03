@@ -2,6 +2,18 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ModalService } from './components/modal/modal.service';
 import { Player } from './models/player.model';
 
+enum ModalId {
+  Welcome = 'welcome',
+  GameOver = 'game-over'
+}
+
+enum GameAudio {
+  GameOver = '../assets/audio/game-over.wav',
+  GameWon = '../assets/audio/game-won.wav',
+  GameTie = '../assets/audio/game-draw.wav',
+  FieldClick = '../assets/audio/field-click.wav'
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -32,7 +44,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.modalService.openModal('welcome');
+    this.modalService.openModal(ModalId.Welcome);
   }
 
   createPlayers(): void {
@@ -57,7 +69,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   closeGameOverModal(): void {
-    this.modalService.closeModal('game-over');
+    this.modalService.closeModal(ModalId.GameOver);
   }
 
   createFields(): void {
@@ -77,6 +89,8 @@ export class AppComponent implements OnInit, AfterViewInit {
       return;
     }
 
+    this.playSound(GameAudio.FieldClick);
+
     this.fieldValues[index] = this.playerOnTurn.mark;
 
     this.checkGameState();
@@ -84,6 +98,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.makeRobotoAction();
 
     if (this.isGameTie()) {
+      this.playSound(GameAudio.GameTie);
       this.openGameOverModal();
     }
   }
@@ -110,7 +125,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.choseOneFieldForRoboto();
       this.checkGameState();
       this.changePlayerTurn();
-    }, 500);
+    }, 1000);
   }
 
   checkGameState(): void {
@@ -222,6 +237,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       const index = this.players.indexOf(this.winnerPlayer);
       this.players[index] = this.winnerPlayer;
       this.openGameOverModal();
+      this.playGameOverSound();
     }
   }
 
@@ -235,10 +251,25 @@ export class AppComponent implements OnInit, AfterViewInit {
     return fieldsValuesSum === 0 || fieldsValuesSum === 3;
   }
   openGameOverModal(): void {
-    this.modalService.openModal('game-over');
+    this.modalService.openModal(ModalId.GameOver);
   }
 
   closeWelcomeModal(): void {
-    this.modalService.closeModal('welcome');
+    this.modalService.closeModal(ModalId.Welcome);
+  }
+
+  playGameOverSound(): void {
+    if (this.winnerPlayer.name === 'roboto') {
+      this.playSound(GameAudio.GameOver);
+    } else {
+      this.playSound(GameAudio.GameWon);
+    }
+  }
+
+  playSound(src: string): void {
+    const audio = new Audio();
+    audio.src = src;
+    audio.load();
+    audio.play();
   }
 }
