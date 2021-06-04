@@ -2,7 +2,6 @@
   <app-field
     *ngFor="let value of values; let i = index"
     [fieldMark]="value"
-    [index]="i"
     (click)="onPlayerMove.emit(i)"
   ></app-field>
 </div>

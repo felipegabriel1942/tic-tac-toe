@@ -6,12 +6,7 @@ describe('FieldComponent', () => {
 
   const createComponent = createComponentFactory(FieldComponent);
 
-  beforeEach(
-    () =>
-      (spectator = createComponent({
-        detectChanges: true,
-      }))
-  );
+  beforeEach(() => (spectator = createComponent()));
 
   it('should be red when user click', () => {
     spectator.setInput('fieldMark', 0);
